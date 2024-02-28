@@ -27,7 +27,7 @@ public class LoginController {
         Member member = loginService.login(loginForm.getEmail(), loginForm.getPassword());
 
         if (member == null) {
-            return "login/loginForm";
+            return "login/login";
         }
 
         HttpSession session = request.getSession();

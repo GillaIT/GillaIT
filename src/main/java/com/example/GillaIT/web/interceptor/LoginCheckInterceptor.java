@@ -11,6 +11,8 @@ import org.springframework.web.servlet.HandlerInterceptor;
 public class LoginCheckInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        log.info("preHandle 실행");
+
         String requestURI = request.getRequestURI();
 
         HttpSession session = request.getSession();
