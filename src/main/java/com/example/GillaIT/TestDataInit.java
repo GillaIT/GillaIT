@@ -1,7 +1,7 @@
 package com.example.GillaIT;
 
 import com.example.GillaIT.domain.member.Member;
-import com.example.GillaIT.domain.member.MemberRepository;
+import com.example.GillaIT.domain.member.MemoryMemberRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class TestDataInit {
 
-    private final MemberRepository memberRepository;
+    private final MemoryMemberRepository memberRepository;
 
     @PostConstruct
     public void init(){
