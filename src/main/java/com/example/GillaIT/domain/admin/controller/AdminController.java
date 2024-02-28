@@ -3,8 +3,10 @@ package com.example.GillaIT.domain.admin.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,5 +44,16 @@ public class AdminController {
         return "admin/home";
     }
 
+    @PutMapping("/admin/user/toggle")
+    public String toggle(){
+        log.info("toggle success");
+        return "redirect:/admin";
+    }
+
+    @DeleteMapping("/admin/user")
+    public String deleteUser(){
+        log.info("delete success");
+        return "redirect:/admin";
+    }
 
 }
