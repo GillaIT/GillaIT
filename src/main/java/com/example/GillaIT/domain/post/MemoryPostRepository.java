@@ -13,15 +13,12 @@ public class MemoryPostRepository implements PostRepository {
 
     @Override
     public List<Post> findAll() {
-        // 테스트 데이터
-        Post post = new Post();
-        post.setId(sequence);
-        post.setTitle("hello");
-        post.setContent("test content");
-        post.setRecruitDate(new int[] {3, 5});
-        post.setUserId(4);
-        store.add(post);
-
         return store;
+    }
+
+    @Override
+    public void save(Post post) {
+        post.setId(sequence++);
+        store.add(post);
     }
 }

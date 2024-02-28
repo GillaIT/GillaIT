@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>동아리이름</th>
+            <th>이메일</th>
+            <th>활성화/비활성화</th>
+            <th>삭제</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user: ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.group_name}"></td>
+            <td th:text="${user.email}"></td>
+            <td>
+                <form th:action="@{/admin/user/toggle}" method="post">
+                    <input type="hidden" name="email" th:value="${user.email}" />
+                    <button type="submit" th:if="${user.is_active}">비활성화</button>
+                    <button type="submit" th:unless="${user.is_active}">활성화</button>
+                </form>
+            </td>
+
+            <td>
+                <form th:action="@{/admin/user}" method="post">
+                    <input type="hidden" name="userId" th:value="${user.id}" />
+                    <button type="submit">삭제</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    // PUT 요청을 시뮬레이트하는 함수
+    // PUT 요청을 시뮬레이트하는 함수
+</script>
+</body>
+</html>
