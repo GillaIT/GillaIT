@@ -59,7 +59,7 @@
         <label for="content">내용:</label><br>
         <textarea id="content" name="content" th:field="*{content}" rows="5" cols="50"></textarea><br>
 
-        <label for="content">모집 일정:</label><br>
+        <label>모집 일정:</label><br>
         <input type="checkbox" id="january" name="month" th:field="*{recruitDate}" value="1">
         <label for="january">1월</label>
         <input type="checkbox" id="february" name="month" th:field="*{recruitDate}" value="2">
@@ -87,15 +87,15 @@
 
         <br>
 
-        <label for="content">활동 유형:</label><br>
-        <input type="checkbox" id="society" name="category" th:field="*{category}" value="1">
-        <label for="january">동아리</label>
-        <input type="checkbox" id="hackathon" name="category" th:field="*{category}" value="2">
-        <label for="february">해커톤</label>
-        <input type="checkbox" id="education" name="category" th:field="*{category}" value="2">
-        <label for="february">교육</label>
-        <input type="checkbox" id="etc" name="month" value="2">
-        <label for="february">기타</label><br>
+        <label>활동 유형:</label><br>
+        <input type="checkbox" id="society" name="category" th:field="*{category}" value="society">
+        <label for="society">동아리</label>
+        <input type="checkbox" id="hackathon" name="category" th:field="*{category}" value="hackathon">
+        <label for="hackathon">해커톤</label>
+        <input type="checkbox" id="education" name="category" th:field="*{category}" value="education">
+        <label for="education">교육</label>
+        <input type="checkbox" id="etc" name="month" value="etc">
+        <label for="etc">기타</label><br>
 
         <input type="submit" value="글 올리기">
     </form>

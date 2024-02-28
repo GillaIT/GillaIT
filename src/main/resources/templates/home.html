@@ -9,14 +9,16 @@
     <div class="jumbotron">
         <h1>길라IT</h1>
         <div th:each="post : ${posts}">
-            <div>
-                <span>제목 : </span>
-                <span th:text="${post.title}"></span>
-            </div>
-            <div>
-                <span>내용 : </span>
-                <span th:text="${post.content}"></span>
-            </div>
+            <a th:href="@{/post/detail/{id}(id=${post.id})}">
+                <div>
+                    <span>제목 : </span>
+                    <span th:text="${post.title}"></span>
+                </div>
+                <div>
+                    <span>내용 : </span>
+                    <span th:text="${post.content}"></span>
+                </div>
+            </a>
         </div>
     </div>
 </div> <!-- /container -->
