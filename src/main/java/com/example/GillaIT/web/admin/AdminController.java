@@ -1,4 +1,4 @@
-package com.example.GillaIT.domain.admin.controller;
+package com.example.GillaIT.web.admin;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.rmi.server.LogStream.log;
 
 @Slf4j
 @Controller
