@@ -1,5 +1,9 @@
 package com.example.GillaIT.web.admin;
 
+import com.example.GillaIT.domain.member.Member;
+import com.example.GillaIT.domain.member.MemberRepository;
+import com.example.GillaIT.domain.member.MemberService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +17,9 @@ import java.util.List;
 
 @Slf4j
 @Controller
+@RequiredArgsConstructor
 public class AdminController {
+    private final MemberService memberService;
 
     @GetMapping("/admin/login")
     public String login() {
@@ -34,10 +40,7 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String home(Model model){
-        List<String> users = new ArrayList<>();
-        for(int i=0; i<10; i++){
-            users.add("users"+i);
-        }
+        List<Member> users = memberService.findAll();
         model.addAttribute("users", users);
         return "admin/home";
     }
