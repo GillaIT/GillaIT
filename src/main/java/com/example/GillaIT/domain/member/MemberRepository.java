@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
@@ -24,13 +25,13 @@ public class MemberRepository {
         return repo.get(key);
     }
 
+    public Optional<Member> findByEmail(String email){
+        return findAll().stream()
+                .filter(m -> m.getEmail().equals(email))
+                .findFirst();
+    }
+
     public List<Member> findAll(){
-        List<Member> members = new ArrayList<>();
-
-        for (int i=1;i<=count;i++){
-            members.add(repo.get(i));
-        }
-
-        return members;
+        return new ArrayList<>(repo.values());
     }
 }
