@@ -9,7 +9,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberService {
 
-    private final MemberRepository memberRepository;
+    private final MemoryMemberRepository memberRepository;
 
     public List<Member> findAll(){
         return memberRepository.findAll();
