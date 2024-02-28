@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class MemoryPostRepository implements PostRepository {
@@ -20,5 +21,10 @@ public class MemoryPostRepository implements PostRepository {
     public void save(Post post) {
         post.setId(sequence++);
         store.add(post);
+    }
+
+    @Override
+    public Optional<Post> findById(Long id) {
+        return store.stream().filter(post -> post.getId().equals(id)).findAny();
     }
 }

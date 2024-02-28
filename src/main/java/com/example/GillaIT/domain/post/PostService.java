@@ -4,6 +4,7 @@ import com.example.GillaIT.domain.entity.Post;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PostService {
@@ -20,5 +21,9 @@ public class PostService {
 
     public void savePost(Post post) {
         postRepository.save(post);
+    }
+
+    public Post getPost(Long postId) {
+        return postRepository.findById(postId).orElse(null);
     }
 }
