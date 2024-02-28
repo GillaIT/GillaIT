@@ -1,4 +1,4 @@
-package com.example.GillaIT.domain.admin.controller;
+package com.example.GillaIT.web.admin;
 
 import lombok.Getter;
 import lombok.Setter;
