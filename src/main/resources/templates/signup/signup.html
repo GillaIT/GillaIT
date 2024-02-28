@@ -36,6 +36,17 @@
             <!--            <div class="field-error" th:errors="*{name}" />-->
         </div>
         <div>
+            <button type="button" class="btn btn-primary" id="email-button">이메일 보내기</button>
+        </div>
+        <div>
+            <label>이메일</label>
+            <input type="text" id="code" class="form-control">
+            <!--            <div class="field-error" th:errors="*{name}" />-->
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary" id="auth-button">이메일 인증</button>
+        </div>
+        <div>
             <label for="password">비밀번호</label>
             <input type="password" id="password" th:field="*{password}"
                    class="form-control">
@@ -61,5 +72,23 @@
         </div>
     </form>
 </div> <!-- /container -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#email-button").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "/email",
+                success: function () {
+                    alert("email controller 함수가 성공적으로 실행되었습니다.");
+                },
+                error: function () {
+                    alert("email controller 함수 실행에 실패했습니다.");
+                }
+            });
+        });
+    });
+</script>
+
 </body>
 </html>
