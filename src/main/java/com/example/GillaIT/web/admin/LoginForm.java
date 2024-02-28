@@ -1,19 +1,15 @@
 package com.example.GillaIT.web.admin;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-
+@Data
 public class LoginForm {
 
     private int id;
-
-    @Getter
-    @Setter
     private String email;
-
-    @Getter
-    @Setter
     private String password;
+
 
 }
