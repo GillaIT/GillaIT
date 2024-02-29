@@ -76,13 +76,13 @@
         </div>
         <label>활동 유형:</label><br>
         <div class="checkbox-list">
-            <input type="checkbox" id="society" name="activity-type" value="club" th:checked="${#arrays.contains(post.category, 'society')}" disabled>
+            <input type="checkbox" id="society" name="category" value="club" th:checked="${#arrays.contains(post.category, 'society')}" disabled>
             <label for="society">동아리</label>
-            <input type="checkbox" id="hackathon" name="activity-type" value="hackathon" th:checked="${#arrays.contains(post.category, 'hackathon')}" disabled>
+            <input type="checkbox" id="hackathon" name="category" value="hackathon" th:checked="${#arrays.contains(post.category, 'hackathon')}" disabled>
             <label for="hackathon">해커톤</label>
-            <input type="checkbox" id="education" name="activity-type" value="club" th:checked="${#arrays.contains(post.category, 'education')}" disabled>
+            <input type="checkbox" id="education" name="category" value="club" th:checked="${#arrays.contains(post.category, 'education')}" disabled>
             <label for="education">교육</label>
-            <input type="checkbox" id="etc" name="activity-type" value="hackathon" th:checked="${#arrays.contains(post.category, 'etc')}" disabled>
+            <input type="checkbox" id="etc" name="category" value="etc" th:checked="${#arrays.contains(post.category, 'etc')}" disabled>
             <label for="etc">기타</label>
         </div>
     </div>
