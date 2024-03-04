@@ -16,20 +16,20 @@ import java.util.List;
 public class AdminController {
     private final MemberService memberService;
 
-    @GetMapping("/admin/login")
-    public String login() {
-        return "admin/login";
-    }
-
-    @PostMapping("/admin/login")
-    public String processLogin(LoginForm form) {
-        String email = form.getEmail();
-        String password = form.getPassword();
-        if ("admin".equals(email) && "password".equals(password)) {
-            return "redirect:/admin";
-        }
-        return "redirect:/admin/login";
-    }
+//    @GetMapping("/admin/login")
+//    public String login() {
+//        return "admin/login";
+//    }
+//
+//    @PostMapping("/admin/login")
+//    public String processLogin(LoginForm form) {
+//        String email = form.getEmail();
+//        String password = form.getPassword();
+//        if ("admin".equals(email) && "password".equals(password)) {
+//            return "redirect:/admin";
+//        }
+//        return "redirect:/admin/login";
+//    }
 
     @GetMapping("/admin")
     public String home(Model model){

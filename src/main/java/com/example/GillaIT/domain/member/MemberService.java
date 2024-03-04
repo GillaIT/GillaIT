@@ -1,5 +1,6 @@
 package com.example.GillaIT.domain.member;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +16,12 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
+    @Transactional
     public void toggleIsActive(Long id) {
         memberRepository.toggleIsActive(id);
     }
 
+    @Transactional
     public void deleteById(Long id) {
         memberRepository.deleteById(id);
     }
