@@ -14,4 +14,12 @@ public class MemberService {
     public List<Member> findAll(){
         return memberRepository.findAll();
     }
+
+    public void toggleIsActive(Long id) {
+        memberRepository.toggleIsActive(id);
+    }
+
+    public void deleteById(Long id) {
+        memberRepository.deleteById(id);
+    }
 }
