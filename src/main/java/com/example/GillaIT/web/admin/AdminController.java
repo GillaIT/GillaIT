@@ -47,18 +47,16 @@ public class AdminController {
         return "admin/home";
     }
 
-    @PostMapping("/admin/user/toggle")
-    public String toggle(LoginForm loginForm) {
-        Long id = loginForm.getId();
+    @PutMapping("/admin/user/toggle/{id}")
+    public String toggle(@PathVariable Long id) {
         if (id != null)
             memberService.toggleIsActive(id);
         return "redirect:/admin";
     }
 
 
-    @PostMapping("/admin/user")
-    public String deleteUser(LoginForm loginForm){
-        Long id = loginForm.getId();
+    @DeleteMapping("/admin/user/{id}")
+    public String deleteUser(@PathVariable Long id){
         if (id != null)
             memberService.deleteById(id);
         return "redirect:/admin";
