@@ -35,14 +35,6 @@ public class MemoryMemberRepository {
         return new ArrayList<>(repo.values());
     }
 
-    public void toggleIsActive(Long id){
-        Member member = repo.get(id);
-        if (member != null) {
-            member.setIs_active(!member.getIs_active());
-            repo.put(member.getId(), member);
-        }
-    }
-
     public void deleteById(Long id){
         repo.remove(id);
     }
