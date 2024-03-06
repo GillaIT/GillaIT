@@ -21,8 +21,6 @@ public class SignupController {
 
     @PostMapping("/signup")
     public String signup(@ModelAttribute("member") Member member){
-        member.setIs_admin(false);
-        member.setIs_active(false);
         signupService.register(member);
 
         return "redirect:/";

@@ -34,4 +34,8 @@ public class MemoryMemberRepository {
     public List<Member> findAll(){
         return new ArrayList<>(repo.values());
     }
+
+    public void deleteById(Long id){
+        repo.remove(id);
+    }
 }

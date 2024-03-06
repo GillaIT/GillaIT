@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시물 상세 페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .readonly {
+            background-color: #f4f4f4;
+            cursor: not-allowed;
+        }
+
+        .checkbox-list {
+            margin-bottom: 10px;
+        }
+
+        .checkbox-list label {
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>게시물 상세 페이지</h2>
+    <div>
+        <label for="title">제목:</label><br>
+        <input type="text" id="title" name="title" th:value="${post.title}" readonly><br>
+        <label for="content">내용:</label><br>
+        <textarea id="content" name="content" rows="5" cols="50" readonly th:text="${post.content}"></textarea><br>
+        <label>모집 일정:</label><br>
+        <div class="checkbox-list">
+            <input type="checkbox" id="january" name="month" value="1" th:checked="${#arrays.contains(post.recruitDate, '1')}" disabled>
+            <label for="january">1월</label>
+            <input type="checkbox" id="february" name="month" value="2" th:checked="${#arrays.contains(post.recruitDate, '2')}" disabled>
+            <label for="february">2월</label>
+            <input type="checkbox" id="march" name="month" value="3" th:checked="${#arrays.contains(post.recruitDate, '3')}" disabled>
+            <label for="march">3월</label>
+            <input type="checkbox" id="april" name="month" value="4" th:checked="${#arrays.contains(post.recruitDate, '4')}" disabled>
+            <label for="april">4월</label>
+            <input type="checkbox" id="may" name="month" value="5" th:checked="${#arrays.contains(post.recruitDate, '5')}" disabled>
+            <label for="may">5월</label>
+            <input type="checkbox" id="june" name="month" value="6" th:checked="${#arrays.contains(post.recruitDate, '6')}" disabled>
+            <label for="june">6월</label>
+            <input type="checkbox" id="july" name="month" value="7" th:checked="${#arrays.contains(post.recruitDate, '7')}" disabled>
+            <label for="july">7월</label>
+            <input type="checkbox" id="august" name="month" value="8" th:checked="${#arrays.contains(post.recruitDate, '8')}" disabled>
+            <label for="august">8월</label>
+            <input type="checkbox" id="september" name="month" value="9" th:checked="${#arrays.contains(post.recruitDate, '9')}" disabled>
+            <label for="september">9월</label>
+            <input type="checkbox" id="october" name="month" value="10" th:checked="${#arrays.contains(post.recruitDate, '10')}" disabled>
+            <label for="october">10월</label>
+            <input type="checkbox" id="november" name="month" value="11" th:checked="${#arrays.contains(post.recruitDate, '11')}" disabled>
+            <label for="november">11월</label>
+            <input type="checkbox" id="december" name="month" value="12" th:checked="${#arrays.contains(post.recruitDate, '12')}" disabled>
+            <label for="december">12월</label>
+        </div>
+        <label>활동 유형:</label><br>
+        <div class="checkbox-list">
+            <input type="checkbox" id="society" name="activity-type" value="club" th:checked="${#arrays.contains(post.category, 'society')}" disabled>
+            <label for="society">동아리</label>
+            <input type="checkbox" id="hackathon" name="activity-type" value="hackathon" th:checked="${#arrays.contains(post.category, 'hackathon')}" disabled>
+            <label for="hackathon">해커톤</label>
+            <input type="checkbox" id="education" name="activity-type" value="club" th:checked="${#arrays.contains(post.category, 'education')}" disabled>
+            <label for="education">교육</label>
+            <input type="checkbox" id="etc" name="activity-type" value="hackathon" th:checked="${#arrays.contains(post.category, 'etc')}" disabled>
+            <label for="etc">기타</label>
+        </div>
+    </div>
+</div>
+</body>
+</html>
