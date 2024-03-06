@@ -31,7 +31,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	// email authentication
-	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '2.6.3'
+	implementation 'org.springframework.boot:spring-boot-starter-mail:2.7.1'
 
 	// validation
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
