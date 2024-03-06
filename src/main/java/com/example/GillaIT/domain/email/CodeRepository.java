@@ -1,13 +1,17 @@
 package com.example.GillaIT.domain.email;
 
-import org.springframework.stereotype.Repository;
+import com.example.GillaIT.domain.entity.Code;
+import com.example.GillaIT.domain.member.Member;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public class CodeRepository {
+import java.util.Optional;
 
+public interface CodeRepository extends JpaRepository<Code, Long> {
 
-    private void save(String code, String email) {
-
+    default Optional<Code> findByEmail(String email){
+        return findAll().stream()
+                .filter(m -> m.getEmail().equals(email))
+                .findFirst();
     }
-    public String findCodeByEmail()
+
 }

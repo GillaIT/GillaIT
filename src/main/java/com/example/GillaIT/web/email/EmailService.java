@@ -1,5 +1,7 @@
 package com.example.GillaIT.web.email;
 
+import com.example.GillaIT.domain.email.CodeRepository;
+import com.example.GillaIT.domain.email.CodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -24,11 +26,6 @@ public class EmailService {
             randomNum += Integer.toString(random.nextInt(10));
         }
         authNumber = Integer.parseInt(randomNum);
-    }
-
-    //
-    public boolean CheckAuthNum(String email, String code) {
-
     }
 
     // 이메일 전송 세팅
