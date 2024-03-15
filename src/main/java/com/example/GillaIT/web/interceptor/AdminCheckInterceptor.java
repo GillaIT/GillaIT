@@ -16,10 +16,6 @@ public class AdminCheckInterceptor implements HandlerInterceptor {
         String requestURI = request.getRequestURI();
 
         HttpSession session = request.getSession();
-        if (session == null || session.getAttribute(SessionConst.LOGIN_MEMBER) == null) {
-            response.sendRedirect("/login?redirectURL=" + requestURI);
-            return false;
-        }
 
         Member member = (Member) session.getAttribute(SessionConst.LOGIN_MEMBER);
         if (member == null || !member.getIs_admin()) {

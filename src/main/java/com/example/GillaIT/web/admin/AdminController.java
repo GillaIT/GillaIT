@@ -17,15 +17,16 @@ import java.util.List;
 @Slf4j
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/admin")
 public class AdminController {
     private final MemberService memberService;
     private final LoginService loginService;
-    @GetMapping("/admin/login")
+    @GetMapping("/login")
     public String login() {
         return "admin/login";
     }
 
-    @PostMapping("/admin/login")
+    @PostMapping("/login")
     public String processLogin(LoginForm loginForm, HttpServletRequest request) {
         Member member = loginService.login(loginForm.getEmail(), loginForm.getPassword());
 
@@ -40,14 +41,14 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @GetMapping("/admin")
+    @GetMapping("")
     public String home(Model model){
         List<Member> users = memberService.findAll();
         model.addAttribute("users", users);
         return "admin/home";
     }
 
-    @PutMapping("/admin/user/toggle/{id}")
+    @PutMapping("/user/toggle/{id}")
     public String toggle(@PathVariable Long id) {
         if (id != null)
             memberService.toggleIsActive(id);
@@ -55,7 +56,7 @@ public class AdminController {
     }
 
 
-    @DeleteMapping("/admin/user/{id}")
+    @DeleteMapping("/user/{id}")
     public String deleteUser(@PathVariable Long id){
         if (id != null)
             memberService.deleteById(id);
