@@ -22,16 +22,16 @@
             <td th:text="${user.group_name}"></td>
             <td th:text="${user.email}"></td>
             <td>
-                <form th:action="/admin/user/toggle/${user.id}" method="post">
-                    <input type="hidden" name="_method" value="put"/>
+                <form th:action="@{/admin/user/toggle/{userId}(userId=${user.id})}" method="post">
+                <input type="hidden" name="_method" value="put"/>
                     <button type="submit" th:if="${user.is_active}">비활성화</button>
                     <button type="submit" th:unless="${user.is_active}">활성화</button>
                 </form>
             </td>
 
             <td>
-                <form id="delete_form" th:action="/admin/user/${user.id}" method="post">
-                    <input type="hidden" name="_method" value="delete"/>
+                <form id="delete_form" th:action="@{/admin/user/{userId}(userId=${user.id})}" method="post">
+                <input type="hidden" name="_method" value="delete"/>
                     <button type="submit">
                         <a onclick="if (confirm('삭제하시겠습니까?')) document.getElementById('delete_form').submit();" class="btn btn-danger">삭제</a>
                     </button>
