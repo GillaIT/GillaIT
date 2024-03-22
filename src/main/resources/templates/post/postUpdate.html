@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판 글 수정</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>대외활동 소개 글 수정</h2>
+    <form th:action="@{/post}" th:object="${post}" th:method="put"> <!-- post.html로 폼을 제출하는 것으로 가정 -->
+        <input type="hidden" name="id" th:field="*{id}" />
+        <label for="title">제목:</label><br>
+        <input type="text" id="title" name="title" th:field="*{title}"><br>
+        <label for="content">내용:</label><br>
+        <textarea id="content" name="content" th:field="*{content}" rows="5" cols="50"></textarea><br>
+
+        <label>모집 일정:</label><br>
+        <input type="checkbox" id="january" name="month" th:field="*{recruitDate}" value="1">
+        <label for="january">1월</label>
+        <input type="checkbox" id="february" name="month" th:field="*{recruitDate}" value="2">
+        <label for="february">2월</label>
+        <input type="checkbox" id="march" name="month" th:field="*{recruitDate}" value="3">
+        <label for="march">3월</label>
+        <input type="checkbox" id="april" name="month" th:field="*{recruitDate}" value="4">
+        <label for="april">4월</label>
+        <input type="checkbox" id="may" name="month" th:field="*{recruitDate}" value="5">
+        <label for="may">5월</label>
+        <input type="checkbox" id="june" name="month" th:field="*{recruitDate}" value="6">
+        <label for="june">6월</label>
+        <input type="checkbox" id="july" name="month" th:field="*{recruitDate}" value="7">
+        <label for="july">7월</label>
+        <input type="checkbox" id="august" name="month" th:field="*{recruitDate}" value="8">
+        <label for="august">8월</label>
+        <input type="checkbox" id="september" name="month" th:field="*{recruitDate}" value="9">
+        <label for="september">9월</label>
+        <input type="checkbox" id="october" name="month" th:field="*{recruitDate}" value="10">
+        <label for="october">10월</label>
+        <input type="checkbox" id="november" name="month" th:field="*{recruitDate}" value="11">
+        <label for="november">11월</label>
+        <input type="checkbox" id="december" name="month" th:field="*{recruitDate}" value="12">
+        <label for="december">12월</label><br>
+
+        <br>
+
+        <label>활동 유형:</label><br>
+        <input type="checkbox" id="society" name="category" th:field="*{category}" value="society">
+        <label for="society">동아리</label>
+        <input type="checkbox" id="hackathon" name="category" th:field="*{category}" value="hackathon">
+        <label for="hackathon">해커톤</label>
+        <input type="checkbox" id="education" name="category" th:field="*{category}" value="education">
+        <label for="education">교육</label>
+        <input type="checkbox" id="etc" name="category" value="etc">
+        <label for="etc">기타</label><br>
+
+        <input type="submit" value="글 수정하기">
+    </form>
+</div>
+</body>
+</html>
