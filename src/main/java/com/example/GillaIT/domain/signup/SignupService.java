@@ -2,6 +2,7 @@ package com.example.GillaIT.domain.signup;
 
 import com.example.GillaIT.domain.member.Member;
 import com.example.GillaIT.domain.member.MemberRepository;
+import com.example.GillaIT.domain.member.MemoryMemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class SignupService {
 
-    private final MemberRepository memberRepository;
+    private final MemoryMemberRepository memberRepository;
 
     public void register(Member member){
         member.setIs_admin(false);
