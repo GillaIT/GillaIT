@@ -11,18 +11,15 @@ public class MemoryPostRepository {
     private static List<Post> store = new ArrayList<>();
     private static Long sequence = 0L;
 
-//    @Override
     public List<Post> findAll() {
         return store;
     }
 
-//    @Override
     public void save(Post post) {
         post.setId(sequence++);
         store.add(post);
     }
 
-//    @Override
     public Optional<Post> findById(Long id) {
         return store.stream().filter(post -> post.getId().equals(id)).findAny();
     }
