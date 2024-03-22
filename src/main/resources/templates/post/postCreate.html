@@ -53,7 +53,7 @@
 <body>
 <div class="container">
     <h2>대외활동 소개 글 작성</h2>
-    <form action="" th:action="@{/post}" th:object="${post}" method="post"> <!-- post.html로 폼을 제출하는 것으로 가정 -->
+    <form th:action="@{/post}" th:object="${post}" method="post"> <!-- post.html로 폼을 제출하는 것으로 가정 -->
         <label for="title">제목:</label><br>
         <input type="text" id="title" name="title" th:field="*{title}"><br>
         <label for="content">내용:</label><br>
