@@ -33,4 +33,10 @@ public class PostController {
         model.addAttribute("post", post);
         return "post/postDetail";
     }
+
+    @DeleteMapping("")
+    public String postDeleteProcess(@RequestParam("postId") Long postId) {
+        postService.deletePost(postId);
+        return "redirect:/";
+    }
 }
