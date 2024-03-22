@@ -25,13 +25,6 @@
                 로그인
             </button>
         </div>
-        <div class="col" th:if="${loggedIn}">
-            <a href="/post/create">
-                <button class="w-100 btn btn-dark btn-lg" type="button">
-                    글 작성
-                </button>
-            </a>
-        </div>
         <div class="col">
             <button class="w-100 btn btn-dark btn-lg"
                     th:onclick="|location.href='@{/mypage}'|" type="button" >
@@ -43,11 +36,6 @@
                     글 작성
                 </button>
             </a>
-        <div class="col">
-            <button class="w-100 btn btn-dark btn-lg"
-                    th:onclick="|location.href='@{/mypage}'|" type="button" >
-                마이페이지
-            </button>
         </div>
     </div>
     <hr class="my-4">
