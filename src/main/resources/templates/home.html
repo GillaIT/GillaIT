@@ -37,6 +37,13 @@
                 마이페이지
             </button>
         </div>
+        <div class="col" th:if="${loggedIn}">
+            <a href="/post/create">
+                <button class="w-100 btn btn-dark btn-lg" type="button">
+                    글 작성
+                </button>
+            </a>
+        </div>
     </div>
     <hr class="my-4">
 </div>

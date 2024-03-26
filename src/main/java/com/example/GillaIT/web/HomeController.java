@@ -28,7 +28,7 @@ public class HomeController {
 
         // 로그인 했는지 확인 -> 글 작성 버튼 보이게
         HttpSession session = request.getSession();
-        if(session != null & session.getAttribute(SessionConst.LOGIN_MEMBER) != null) {
+        if(session != null && session.getAttribute(SessionConst.LOGIN_MEMBER) != null) {
             model.addAttribute("loggedIn", true);
         }
         return "home";
