@@ -97,6 +97,8 @@
         <input type="checkbox" id="etc" name="category" value="etc">
         <label for="etc">기타</label><br>
 
+        <input type="hidden" name="member" th:field="*{member}" th:value="${member}" />
+
         <input type="submit" value="글 올리기">
     </form>
 </div>
