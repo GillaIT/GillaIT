@@ -113,13 +113,15 @@
             <input type="checkbox" id="etc" name="category" value="etc" th:checked="${#arrays.contains(post.category, 'etc')}" disabled>
             <label for="etc">기타</label>
         </div>
-        <a th:href="@{/post/update/{id}(id=${post.id})}">
-            <input type="button" value="글 수정하기">
-        </a>
-        <form action="/post" th:method="delete">
-            <input type="hidden" th:name="postId" th:value="${post.id}" />
-            <input type="submit" value="글 삭제하기">
-        </form>
+        <span th:if="${writer == true}">
+            <a th:href="@{/post/update/{id}(id=${post.id})}">
+                <input type="button" value="글 수정하기">
+            </a>
+            <form action="/post" th:method="delete">
+                <input type="hidden" th:name="postId" th:value="${post.id}" />
+                <input type="submit" value="글 삭제하기">
+            </form>
+        </span>
     </div>
 </div>
 </body>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시판 글 작성</title>
+    <title>게시판 글 수정</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -52,8 +52,9 @@
 </head>
 <body>
 <div class="container">
-    <h2>대외활동 소개 글 작성</h2>
-    <form th:action="@{/post}" th:object="${post}" method="post"> <!-- post.html로 폼을 제출하는 것으로 가정 -->
+    <h2>대외활동 소개 글 수정</h2>
+    <form th:action="@{/post}" th:object="${post}" th:method="put"> <!-- post.html로 폼을 제출하는 것으로 가정 -->
+        <input type="hidden" name="id" th:field="*{id}" />
         <label for="title">제목:</label><br>
         <input type="text" id="title" name="title" th:field="*{title}"><br>
         <label for="content">내용:</label><br>
@@ -97,9 +98,7 @@
         <input type="checkbox" id="etc" name="category" value="etc">
         <label for="etc">기타</label><br>
 
-        <input type="hidden" name="member" th:field="*{member}" th:value="${member}" />
-
-        <input type="submit" value="글 올리기">
+        <input type="submit" value="글 수정하기">
     </form>
 </div>
 </body>
