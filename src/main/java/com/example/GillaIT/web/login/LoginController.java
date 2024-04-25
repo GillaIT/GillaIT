@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,11 +24,16 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute LoginForm loginForm, HttpServletRequest request) {
+    public String login(@ModelAttribute LoginForm loginForm, HttpServletRequest request, Model model) {
         Member member = loginService.login(loginForm.getEmail(), loginForm.getPassword());
 
         if (member == null) {
             return "login/login";
+        }
+
+        if (!member.getIs_active()) {
+            model.addAttribute("message", "아직 승인되지 않은 계정입니다.");
+            return "message/message";
         }
 
         HttpSession session = request.getSession();
