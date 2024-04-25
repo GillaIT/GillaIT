@@ -26,6 +26,10 @@ public class HomeController {
 
         model.addAttribute("posts", postService.getPosts());
 
+        if (loginMember != null) {
+            model.addAttribute("member", loginMember);
+        }
+
         // 로그인 했는지 확인 -> 글 작성 버튼 보이게
         HttpSession session = request.getSession();
         if(session != null && session.getAttribute(SessionConst.LOGIN_MEMBER) != null) {
