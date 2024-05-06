@@ -10,4 +10,5 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
                 .filter(m -> m.getEmail().equals(email))
                 .findFirst();
     }
+
 }
