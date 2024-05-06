@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>동아리이름</th>
+            <th>이메일</th>
+            <th>활성화/비활성화</th>
+            <th>삭제</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user: ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.group_name}"></td>
+            <td th:text="${user.email}"></td>
+            <td>
+                <form th:action="@{/admin/user/toggle/{userId}(userId=${user.id})}" method="post">
+                <input type="hidden" name="_method" value="put"/>
+                    <button type="submit" th:if="${user.is_active}">비활성화</button>
+                    <button type="submit" th:unless="${user.is_active}">활성화</button>
+                </form>
+            </td>
+
+            <td>
+                <form id="delete_form" th:action="@{/admin/user/{userId}(userId=${user.id})}" method="post">
+                <input type="hidden" name="_method" value="delete"/>
+                    <button type="submit">
+                        <a onclick="if (confirm('삭제하시겠습니까?')) document.getElementById('delete_form').submit();" class="btn btn-danger">삭제</a>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

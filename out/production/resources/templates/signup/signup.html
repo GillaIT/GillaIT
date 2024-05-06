@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}" href="../css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .container {
+            max-width: 560px;
+        }
+        .field-error {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+        .email-box, .code-box {
+            display: flex;
+            align-items: center;
+        }
+        .email-box input, .code-box input {
+            flex: 1;
+            margin-right: 10px;
+        }
+        .email-box button, .code-box button {
+            flex: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>회원 가입</h2>
+    </div>
+    <h4 class="mb-3">회원 정보 입력</h4>
+    <form action="" th:action th:object="${member}" method="post">
+        <div>
+            <label for="group_name">그룹 이름</label>
+            <input type="text" id="group_name" th:field="*{group_name}" class="form-control">
+        </div>
+        <div>
+            <label for="email">이메일</label>
+            <div class="email-box">
+                <input type="text" id="email" th:field="*{email}" class="form-control">
+                <button type="button" class="btn btn-primary" id="email-button">인증번호 전송</button>
+            </div>
+        </div>
+        <div>
+            <label>인증번호 입력</label>
+            <div class="code-box">
+                <input type="text" id="code" class="form-control">
+                <button type="button" class="btn btn-primary" id="auth-button">확인</button>
+            </div>
+        </div>
+        <div>
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" th:field="*{password}" class="form-control">
+        </div>
+        <div>
+            <label for="image">이미지</label>
+            <input type="text" id="image" th:field="*{image}" class="form-control">
+        </div>
+        <hr class="my-4">
+        <div class="row">
+            <div class="col">
+                <button class="w-100 btn btn-primary btn-lg" type="submit">회원 가입</button>
+            </div>
+            <div class="col">
+                <button class="w-100 btn btn-secondary btn-lg" onclick="location.href='items.html'"
+                        th:onclick="|location.href='@{/}'|" type="button">취소</button>
+            </div>
+        </div>
+    </form>
+</div> <!-- /container -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#email-button").click(function () {
+            var email = $("#email").val();
+            $.ajax({
+                type: "POST",
+                url: "/signup/email",
+                data: { email: email },
+                success: function () {
+                    alert("email controller 함수가 성공적으로 실행되었습니다.");
+                },
+                error: function () {
+                    alert("email controller 함수 실행에 실패했습니다.");
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

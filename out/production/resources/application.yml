@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/gillait
+    username: minseojang
+    password: 1234
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    database: postgresql
+    hibernate:
+      ddl-auto: validate
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: gillait.official@gmail.com
+    password: vhmt prrw fwox echi
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+  redis:
+    host: localhost
+    port: 6379
