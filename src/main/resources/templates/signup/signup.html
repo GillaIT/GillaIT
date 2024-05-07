@@ -75,10 +75,14 @@
     $(document).ready(function () {
         $("#email-button").click(function () {
             var email = $("#email").val();
+            var emailRequestDto = {
+            email: email
+        };
             $.ajax({
                 type: "POST",
                 url: "/signup/email",
-                data: { email: email },
+                contentType: "application/json",
+                data: JSON.stringify(emailRequestDto),
                 success: function () {
                     alert("email controller 함수가 성공적으로 실행되었습니다.");
                 },
