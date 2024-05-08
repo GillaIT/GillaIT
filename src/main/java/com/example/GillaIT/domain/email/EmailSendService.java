@@ -59,9 +59,9 @@ public class EmailSendService {
     public String joinEmail(String email) {
         makeRandomNum();
         String customerMail = email;
-        String title = "길라IT 회원 가입을 위한 이메일입니다!";
+        String title = "[GillaIT] 회원 가입을 진행하는 중입니다 👀";
         String content =
-                "동아리의 공식 이메일을 인증하기 위한 절차입니다." +
+                "동아리의 공식 이메일을 소유하고 있음을 인증하기 위한 절차입니다." +
                         "<br><br>" +
                         "인증 번호는 " + authNumber + "입니다." +
                         "<br>" +
