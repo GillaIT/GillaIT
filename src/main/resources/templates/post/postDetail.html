@@ -57,10 +57,10 @@
             display: flex;
             flex-wrap: wrap;
             margin-top: 20px;
-        }️
+        }
 
         .image-list img {
-            max-width: 200px; /* 적절한 이미지 크기로 조정 */
+            max-width: 200px;
             margin-right: 10px;
             margin-bottom: 10px;
             border-radius: 4px;
@@ -120,7 +120,7 @@
             <label>게시물 이미지:</label><br>
             <div th:if="${#lists.isEmpty(post.postImages)}">이미지 없음</div>
             <div th:unless="${#lists.isEmpty(post.postImages)}" th:each="image : ${post.postImages}">
-                <img th:src="@{${'https://gillait-bucket.s3.amazonaws.com/' + image.s3Key}}" alt="게시물 이미지" />
+                <img th:src="@{${'https://gillait-bucket.s3.amazonaws.com/' + image.s3Key}}" class="post-image" alt="게시물 이미지" />
             </div>
         </div>
 
