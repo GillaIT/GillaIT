@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시물 상세 페이지</title>
     <style>
+        /* 기존 스타일 유지 */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -38,7 +39,7 @@
             margin-right: 20px;
         }
 
-        input[type="submit"] {
+        input[type="submit"], input[type="button"] {
             background-color: #4CAF50;
             color: white;
             padding: 14px 20px;
@@ -48,22 +49,21 @@
             cursor: pointer;
         }
 
-        input[type="submit"]:hover {
+        input[type="submit"]:hover, input[type="button"]:hover {
             background-color: #45a049;
         }
 
-        input[type="button"] {
-            background-color: #4CAF50;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
+        .image-list {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }️
+
+        .image-list img {
+            max-width: 200px; /* 적절한 이미지 크기로 조정 */
+            margin-right: 10px;
+            margin-bottom: 10px;
             border-radius: 4px;
-            cursor: pointer;
-        }
-
-        input[type="button"]:hover {
-            background-color: #45a049;
         }
     </style>
 </head>
@@ -75,6 +75,7 @@
         <input type="text" id="title" name="title" th:value="${post.title}" readonly><br>
         <label for="content">내용:</label><br>
         <textarea id="content" name="content" rows="5" cols="50" readonly th:text="${post.content}"></textarea><br>
+
         <label>모집 일정:</label><br>
         <div class="checkbox-list">
             <input type="checkbox" id="january" name="month" value="1" th:checked="${#arrays.contains(post.recruitDate, '1')}" disabled>
@@ -102,6 +103,7 @@
             <input type="checkbox" id="december" name="month" value="12" th:checked="${#arrays.contains(post.recruitDate, '12')}" disabled>
             <label for="december">12월</label>
         </div>
+
         <label>활동 유형:</label><br>
         <div class="checkbox-list">
             <input type="checkbox" id="society" name="category" value="club" th:checked="${#arrays.contains(post.category, 'society')}" disabled>
@@ -113,6 +115,15 @@
             <input type="checkbox" id="etc" name="category" value="etc" th:checked="${#arrays.contains(post.category, 'etc')}" disabled>
             <label for="etc">기타</label>
         </div>
+
+        <div class="image-list">
+            <label>게시물 이미지:</label><br>
+            <div th:if="${#lists.isEmpty(post.postImages)}">이미지 없음</div>
+            <div th:unless="${#lists.isEmpty(post.postImages)}" th:each="image : ${post.postImages}">
+                <img th:src="@{${'https://gillait-bucket.s3.amazonaws.com/' + image.s3Key}}" alt="게시물 이미지" />
+            </div>
+        </div>
+
         <span th:if="${writer == true}">
             <a th:href="@{/post/update/{id}(id=${post.id})}">
                 <input type="button" value="글 수정하기">
