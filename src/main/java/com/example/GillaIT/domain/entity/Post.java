@@ -31,6 +31,6 @@ public class Post {
     @JoinColumn(name="user_id")
     private Member member;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="post", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<Image> postImages = new ArrayList<>();
 }
