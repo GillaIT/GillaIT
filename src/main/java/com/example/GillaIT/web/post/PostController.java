@@ -2,6 +2,7 @@ package com.example.GillaIT.web.post;
 
 import com.example.GillaIT.domain.entity.Post;
 import com.example.GillaIT.domain.member.Member;
+import com.example.GillaIT.domain.post.ImageService;
 import com.example.GillaIT.domain.post.PostService;
 import com.example.GillaIT.web.SessionConst;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,17 +12,21 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 @Controller
 @RequestMapping("/post")
 @Slf4j
 public class PostController {
     private PostService postService;
-    public PostController(PostService postService) {
+    private ImageService imageService;
+    public PostController(PostService postService, ImageService imageService) {
         this.postService = postService;
+        this.imageService = imageService;
     }
 
     @GetMapping("/create")
@@ -30,11 +35,12 @@ public class PostController {
     }
 
     @PostMapping("")
-    public String postCreateProcess(HttpServletRequest request, @ModelAttribute("post") Post post) {
+    public String postCreateProcess(HttpServletRequest request, @ModelAttribute("post") Post post, @RequestPart(value="files") List<MultipartFile> images) {
         HttpSession session = request.getSession(false);
         Member member = (Member) session.getAttribute(SessionConst.LOGIN_MEMBER);
         post.setMember(member);
         postService.savePost(post);
+        imageService.savePostImages(post, images);
         return "redirect:/";
     }
 
