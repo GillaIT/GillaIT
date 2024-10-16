@@ -45,6 +45,8 @@ public class PostController {
         return "redirect:/";
     }
 
+    // CDN 서버로 CloudFront를 사용
+    // CloudFront의 URL을 환경변수로 관리함
     @Value("${spring.aws.s3.cloudFrontDomain}")
     private String cloudFrontDomain;
 
